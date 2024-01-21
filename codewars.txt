@@ -64,3 +64,64 @@ def make_readable(seconds):
     else:
         secondosAdjust=f'{secondos}'
     return f'{hoursAdjust}:{minutesAdjust}:{secondosAdjust}'
+
+
+
+Didn't get this one
+https://www.codewars.com/kata/5277c8a221e209d3f6000b56/train/python
+Tried recursion but I hit a wall
+Got through these test cases 
+assert_valid( "()" )
+		assert_invalid( "(}" )
+		assert_valid( "[]" )
+		assert_invalid("[(])")
+		assert_valid( "{}" )
+		assert_valid( "{}()[]" )
+		assert_valid( "([{}])" )
+		assert_invalid( "([}{])" )  <-until here, think it had something to do with my i++
+
+openers = '({['
+closers = ')}]'
+
+def openCloser(opener, string, i, cond):
+    print(string)
+    if cond == 'False':
+        print('false found')
+        return ('False',i)
+
+    if opener == '(':
+        closer = ')'
+    elif opener == '{':
+        closer = '}'
+    elif opener == '[':
+        closer = ']'
+
+    if string[i + 1] == closer:
+        print('closer match')
+        return ('True',i+1)
+
+    elif string[i + 1] in openers:
+        newOpen = string[i + 1]
+        i+=1
+        print('new open')
+        print(newOpen)
+        return openCloser(newOpen, string, i, 'True')
+    else:
+        cond = 'False'
+        print('its fucked')
+        return (cond,i)
+
+def valid_braces(string):
+    cond = 'True'
+    i = 0
+    
+    if string[i] in closers:
+        cond = 'False'
+        return False
+
+    while i < len(string):
+        if openCloser(string[i], string, i, True)[0]=='False':
+            return False
+        i=openCloser(string[i], string, i, True)[1]
+        i += 1
+    return True
