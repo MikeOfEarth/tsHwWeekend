@@ -1,0 +1,66 @@
+6kyu-Javascript
+
+https://www.codewars.com/kata/514b92a657cdc65150000006/javascript
+
+function solution(number){
+  let sum=0
+  if (number<0){
+    return 0
+    console.log('trip')
+  }
+  for (let i=0; i<number; i++){
+    if (i%3===0 || i%5===0){
+      sum+=i
+    }
+  }
+  return sum
+}
+
+https://www.codewars.com/kata/525f50e3b73515a6db000b83/solutions/javascript
+
+
+function createPhoneNumber(numbers){
+  let area = numbers.slice(0,3).join('')
+  let first = numbers.slice(3,6).join('')
+  let second = numbers.slice(6,10).join('')
+  return `(${area}) ${first}-${second}`
+}
+
+
+
+5kyu - python
+
+https://www.codewars.com/kata/525c65e51bf619685c000059/python
+
+def cakes(recipe, available):
+    bakeable=float('inf')
+    for key in recipe.keys():
+        if key not in available:
+            return 0
+        check=available[key]//recipe[key]
+        if check < bakeable:
+            bakeable=check
+    return bakeable
+
+https://www.codewars.com/kata/52685f7382004e774f0001f7/python
+Y tu brute(force)?
+What the hell is divmod?
+Good place for an adjust helper function
+
+def make_readable(seconds):
+    hours=seconds//3600
+    if hours<10:
+        hoursAdjust=f'0{hours}'
+    else:
+        hoursAdjust=f'{hours}'
+    minutes=(seconds-(int(hours)*3600))//60
+    if minutes<10:
+        minutesAdjust=f'0{minutes}'
+    else:
+        minutesAdjust=f'{minutes}'
+    secondos=int(seconds-(int(hours)*3600)-minutes*60)
+    if secondos<10:
+        secondosAdjust=f'0{secondos}'
+    else:
+        secondosAdjust=f'{secondos}'
+    return f'{hoursAdjust}:{minutesAdjust}:{secondosAdjust}'
