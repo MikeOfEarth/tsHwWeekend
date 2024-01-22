@@ -65,6 +65,38 @@ def make_readable(seconds):
         secondosAdjust=f'{secondos}'
     return f'{hoursAdjust}:{minutesAdjust}:{secondosAdjust}'
 
+https://www.codewars.com/kata/52bc74d4ac05d0945d00054e/python
+
+def first_non_repeating_letter(s):
+    divy={}
+    answer=''
+    check=[]
+    for letter in s:
+        if letter in divy:
+            divy[letter]+=1
+        else:
+            divy[letter]=1
+    keys=divy.keys()
+    for key in keys:
+        if divy[key]==1:
+            if key.isupper():
+                if key.lower() in divy:
+                    divy[key]=2
+                    divy[key.lower()]=2
+                else:
+                    check.append(key)
+            elif key.islower():
+                if key.upper() in divy:
+                    divy[key]=2
+                    divy[key.upper()]=2
+                else:
+                    check.append(key)
+            else:
+                check.append(key)
+    if not check:
+        return answer
+    else:
+        return check[0]
 
 
 Didn't get this one
